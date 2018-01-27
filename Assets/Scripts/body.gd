@@ -8,6 +8,18 @@ onready var linked = get_node("../../../../ViewportContainer" + world + "/Viewpo
 func _ready():
 	self.set_meta("Movable", true)
 
+func check_other_world(holding_obj_pos, destination):
+	var other_raycast = linked.get_node("../Player/KinematicBody2D/RayCast2D")
+	print(holding_obj_pos, other_raycast.position)
+	other_raycast.position = holding_obj_pos
+	other_raycast.cast_to = destination
+	other_raycast.force_raycast_update()
+	other_raycast.add_exception(linked)
+	var colliding = other_raycast.is_colliding()
+	other_raycast.remove_exception(linked)
+	other_raycast.position = Vector2(0, 0)
+	return colliding
+
 func on_taken():
 	linked.modulate = Color("434343")
 	linked.get_node("CollisionShape2D").disabled = true

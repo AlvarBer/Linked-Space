@@ -36,16 +36,20 @@ func _process(delta):
 			last_move = movement
 	
 	if Input.is_action_just_pressed("player_%d_take" % player_idx):
-		print("Pressing move")
 		if holding_obj:
-			holding_obj.position += last_move * 64
 			var pos_to_set = holding_obj.get_relative_transform_to_parent(self.get_parent()).origin
-			$KinematicBody2D.remove_child(holding_obj)
-			self.get_parent().add_child(holding_obj)
-			holding_obj.position = pos_to_set
-			holding_obj.get_node("CollisionShape2D").disabled = false
-			holding_obj.on_place()
-			holding_obj = null
+			$KinematicBody2D/RayCast2D.cast_to = last_move * 80
+			$KinematicBody2D/RayCast2D.force_raycast_update()
+			if (not $KinematicBody2D/RayCast2D.is_colliding() and
+			    not holding_obj.check_other_world(pos_to_set, last_move * 80)):
+				holding_obj.position += last_move * 64
+				$KinematicBody2D.remove_child(holding_obj)
+				self.get_parent().add_child(holding_obj)
+				holding_obj.position = pos_to_set
+				holding_obj.get_node("CollisionShape2D").disabled = false
+				holding_obj.on_place()
+				$KinematicBody2D/RayCast2D.remove_exception(holding_obj)
+				holding_obj = null
 		elif result and result.collider.has_meta("Movable"):
 			holding_obj = result.collider
 			holding_obj.get_node("CollisionShape2D").disabled = true
@@ -53,6 +57,7 @@ func _process(delta):
 			$KinematicBody2D.add_child(holding_obj)
 			holding_obj.position = Vector2(0, 0)
 			holding_obj.on_taken()
+			$KinematicBody2D/RayCast2D.add_exception(holding_obj)
 
 	if new_anim != anim:
 		anim = new_anim
