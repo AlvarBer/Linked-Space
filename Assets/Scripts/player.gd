@@ -11,11 +11,13 @@ func _process(delta):
 	
 	if Input.is_action_pressed("player_%d_left" % player_idx):
 		movement += Vector2(-1, 0)
-	if Input.is_action_pressed("player_%d_right" % player_idx):
+	elif Input.is_action_pressed("player_%d_right" % player_idx):
 		movement += Vector2(1, 0)
-	if Input.is_action_pressed("player_%d_up" % player_idx):
+	elif Input.is_action_pressed("player_%d_up" % player_idx):
 		movement += Vector2(0, -1)
-	if Input.is_action_pressed("player_%d_down" % player_idx):
+	elif Input.is_action_pressed("player_%d_down" % player_idx):
 		movement += Vector2(0, 1)
-		
-	position += movement * speed * delta
+	
+	var result = $KinematicBody2D.move_and_collide(movement * speed * delta)
+	if result and result.collider.has_meta("Movable"):
+		pass
