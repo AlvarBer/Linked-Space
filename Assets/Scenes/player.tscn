@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/player_1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Graphics/forbidden.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 24, 28 )
+extents = Vector2( 22, 22 )
 
 [sub_resource type="Animation" id=2]
 
@@ -137,8 +138,6 @@ texture = ExtResource( 2 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
 
-position = Vector2( -0.400033, 0.237314 )
-scale = Vector2( 0.930703, 1.1325 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -148,11 +147,11 @@ _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
 [node name="Sprite" type="Sprite" parent="KinematicBody2D" index="0"]
 
 position = Vector2( 0.429823, -0.209594 )
-scale = Vector2( 1.07446, 0.882997 )
+texture = ExtResource( 2 )
 vframes = 5
 hframes = 4
 frame = 4
-_sections_unfolded = [ "Animation", "Offset" ]
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D" index="1"]
 
@@ -190,9 +189,17 @@ _sections_unfolded = [ "Transform" ]
 [node name="RayCast2D" type="RayCast2D" parent="KinematicBody2D" index="3"]
 
 enabled = false
-exclude_parent = true
+exclude_parent = false
 cast_to = Vector2( 0, 0 )
 collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="forbidden" type="Sprite" parent="KinematicBody2D" index="4"]
+
+visible = false
+texture = ExtResource( 3 )
+offset = Vector2( 0, -34 )
+_sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 

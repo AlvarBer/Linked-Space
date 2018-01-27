@@ -36,26 +36,26 @@ func _process(delta):
 		result = $KinematicBody2D.move_and_collide(movement * speed * delta)
 		if not result:
 			last_move = movement
-	
+
+	if new_anim != anim:
+		anim = new_anim
+		anim_player.play(anim)
+
 	# Taking/placing things
 	if Input.is_action_just_pressed("player_%d_take" % player_idx):
 		if holding_obj:  # Trying to place
 			var this_world_raycast = $KinematicBody2D/RayCast2D
 			var other_world_raycast = holding_obj.get_other_raycast()
+			for raycast in ([this_world_raycast, other_world_raycast]):
+				raycast.position = Vector2(0, 0)
 			other_world_raycast.position = other_world_position(holding_obj)
-			for raycast_n_curr in ([
-			     [this_world_raycast, holding_obj],
-			     [other_world_raycast, holding_obj.linked],
-			]):
-				var raycast = raycast_n_curr[0]
-				var current_holding_obj = raycast_n_curr[1]
+			for raycast in ([this_world_raycast, other_world_raycast]):
+				raycast.position += last_move * 25
 				raycast.cast_to = last_move * 80
-				#raycast.add_exception(player)
 				raycast.force_raycast_update()
-			
 			if (not this_world_raycast.is_colliding() and
 			    not other_world_raycast.is_colliding()):
-				print("Can place")
+				$KinematicBody2D/forbidden.visible = false
 				"""
 				#holding_obj.position += last_move * 64
 				#var pos_to_set = holding_obj.get_relative_transform_to_parent(self.get_parent()).origin
@@ -67,19 +67,7 @@ func _process(delta):
 				holding_obj = null
 				"""
 			else:
-				print(this_world_raycast.get_collider())
-				print(other_world_raycast.get_collider())
-			
-			for raycast_n_curr in ([
-			     [this_world_raycast, holding_obj],
-			     [other_world_raycast, holding_obj.linked],
-			]):
-				var raycast = raycast_n_curr[0]
-				var current_holding_obj = raycast_n_curr[1]
-				raycast.cast_to = Vector2(0, 0)
-				#raycast.remove_exception(current_holding_obj)
-				raycast.position = Vector2(0, 0)
-			
+				$KinematicBody2D/forbidden.visible = true
 		elif result and result.collider.has_meta("Movable"):  # Trying to take
 			holding_obj = result.collider
 			holding_obj.get_node("CollisionShape2D").disabled = true
@@ -88,9 +76,6 @@ func _process(delta):
 			holding_obj.on_taken()
 			$KinematicBody2D/RayCast2D.add_exception(holding_obj)
 
-	if new_anim != anim:
-		anim = new_anim
-		anim_player.play(anim)
 
 static func reparent(node, new_parent):
 	""" Changes the parent of node to new_parent """
