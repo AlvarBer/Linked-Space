@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Graphics/player_2.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Scenes/Stick.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Graphics/door.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Scenes/door.tscn" type="PackedScene" id=5]
 
 [node name="Map" type="Node2D"]
 
@@ -44,11 +44,8 @@ position = Vector2( 145.102, 92.4953 )
 world = "1"
 other = "Stick"
 
-[node name="door" type="Sprite" parent="." index="3"]
+[node name="door_0" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 96, -608 )
-texture = ExtResource( 5 )
-vframes = 2
-_sections_unfolded = [ "Animation" ]
 
 
