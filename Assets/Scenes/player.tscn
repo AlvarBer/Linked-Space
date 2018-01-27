@@ -197,9 +197,10 @@ _sections_unfolded = [ "Transform" ]
 [node name="forbidden" type="Sprite" parent="KinematicBody2D" index="4"]
 
 visible = false
+modulate = Color( 1, 1, 1, 0.745098 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -34 )
-_sections_unfolded = [ "Offset", "Transform" ]
+_sections_unfolded = [ "Offset", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 
@@ -215,5 +216,14 @@ anims/walk_right = SubResource( 5 )
 anims/walk_up = SubResource( 6 )
 blend_times = [  ]
 autoplay = ""
+
+[node name="Timer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="Timer" to="." method="on_Timer_timeout"]
 
 
