@@ -17,6 +17,7 @@ func _process(delta):
 	var result = null
 	var new_anim = "idle"
 	
+	# Check inputs
 	if Input.is_action_pressed("player_%d_left" % player_idx):
 		movement += Vector2(-1, 0)
 		new_anim = "walk_left"
@@ -30,31 +31,59 @@ func _process(delta):
 		movement += Vector2(0, 1)
 		new_anim = "walk_down"
 	
+	# Do actual movement
 	if movement != Vector2(0, 0):
 		result = $KinematicBody2D.move_and_collide(movement * speed * delta)
 		if not result:
 			last_move = movement
 	
+	# Taking/placing things
 	if Input.is_action_just_pressed("player_%d_take" % player_idx):
-		if holding_obj:
-			var pos_to_set = holding_obj.get_relative_transform_to_parent(self.get_parent()).origin
-			$KinematicBody2D/RayCast2D.cast_to = last_move * 80
-			$KinematicBody2D/RayCast2D.force_raycast_update()
-			if (not $KinematicBody2D/RayCast2D.is_colliding() and
-			    not holding_obj.check_other_world(pos_to_set, last_move * 80)):
-				holding_obj.position += last_move * 64
-				$KinematicBody2D.remove_child(holding_obj)
-				self.get_parent().add_child(holding_obj)
+		if holding_obj:  # Trying to place
+			var this_world_raycast = $KinematicBody2D/RayCast2D
+			var other_world_raycast = holding_obj.get_other_raycast()
+			other_world_raycast.position = other_world_position(holding_obj)
+			for raycast_n_curr in ([
+			     [this_world_raycast, holding_obj],
+			     [other_world_raycast, holding_obj.linked],
+			]):
+				var raycast = raycast_n_curr[0]
+				var current_holding_obj = raycast_n_curr[1]
+				raycast.cast_to = last_move * 80
+				#raycast.add_exception(player)
+				raycast.force_raycast_update()
+			
+			if (not this_world_raycast.is_colliding() and
+			    not other_world_raycast.is_colliding()):
+				print("Can place")
+				"""
+				#holding_obj.position += last_move * 64
+				#var pos_to_set = holding_obj.get_relative_transform_to_parent(self.get_parent()).origin
+				reparent(holding_obj, self.get_parent())
 				holding_obj.position = pos_to_set
 				holding_obj.get_node("CollisionShape2D").disabled = false
 				holding_obj.on_place()
-				$KinematicBody2D/RayCast2D.remove_exception(holding_obj)
+				
 				holding_obj = null
-		elif result and result.collider.has_meta("Movable"):
+				"""
+			else:
+				print(this_world_raycast.get_collider())
+				print(other_world_raycast.get_collider())
+			
+			for raycast_n_curr in ([
+			     [this_world_raycast, holding_obj],
+			     [other_world_raycast, holding_obj.linked],
+			]):
+				var raycast = raycast_n_curr[0]
+				var current_holding_obj = raycast_n_curr[1]
+				raycast.cast_to = Vector2(0, 0)
+				#raycast.remove_exception(current_holding_obj)
+				raycast.position = Vector2(0, 0)
+			
+		elif result and result.collider.has_meta("Movable"):  # Trying to take
 			holding_obj = result.collider
 			holding_obj.get_node("CollisionShape2D").disabled = true
-			holding_obj.get_parent().remove_child(holding_obj)
-			$KinematicBody2D.add_child(holding_obj)
+			reparent(holding_obj, $KinematicBody2D)
 			holding_obj.position = Vector2(0, 0)
 			holding_obj.on_taken()
 			$KinematicBody2D/RayCast2D.add_exception(holding_obj)
@@ -62,3 +91,11 @@ func _process(delta):
 	if new_anim != anim:
 		anim = new_anim
 		anim_player.play(anim)
+
+static func reparent(node, new_parent):
+	""" Changes the parent of node to new_parent """
+	node.get_parent().remove_child(node)
+	new_parent.add_child(node)
+
+func other_world_position(node):
+	return node.get_relative_transform_to_parent(self.get_parent()).origin
