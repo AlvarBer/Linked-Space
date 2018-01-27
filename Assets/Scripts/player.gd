@@ -43,6 +43,7 @@ func _process(delta):
 			self.get_parent().add_child(holding_obj)
 			holding_obj.position = pos_to_set
 			holding_obj.get_node("CollisionShape2D").disabled = false
+			holding_obj.on_place()
 			holding_obj = null
 		elif result and result.collider.has_meta("Movable"):
 			holding_obj = result.collider
@@ -50,8 +51,8 @@ func _process(delta):
 			holding_obj.get_parent().remove_child(holding_obj)
 			$KinematicBody2D.add_child(holding_obj)
 			holding_obj.position = Vector2(0, 0)
-			
+			holding_obj.on_taken()
+
 	if new_anim != anim:
 		anim = new_anim
 		anim_player.play(anim)
-		
