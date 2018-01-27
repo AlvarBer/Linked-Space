@@ -127,7 +127,7 @@ tracks/0/keys = {
 "values": [ 14, 15, 16, 17, 18 ]
 }
 
-[node name="Player" type="Node2D" index="0"]
+[node name="Player" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -186,6 +186,13 @@ editor_draw_drag_margin = false
 position = Vector2( -1, 0 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="RayCast2D" type="RayCast2D" parent="KinematicBody2D" index="3"]
+
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 0, 0 )
+collision_mask = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 
