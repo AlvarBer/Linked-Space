@@ -40,6 +40,7 @@ texture = ExtResource( 3 )
 
 modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 145.102, 92.4953 )
-path = "../../../../ViewportContainer/Viewport/Map/Stick"
+world = "1"
+other = "Stick"
 
 

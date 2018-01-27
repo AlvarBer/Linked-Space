@@ -35,7 +35,8 @@ func _process(delta):
 		if not result:
 			last_move = movement
 	
-	if Input.is_action_just_pressed("player_%d_move" % player_idx):
+	if Input.is_action_just_pressed("player_%d_take" % player_idx):
+		print("Pressing move")
 		if holding_obj:
 			holding_obj.position += last_move * 64
 			var pos_to_set = holding_obj.get_relative_transform_to_parent(self.get_parent()).origin

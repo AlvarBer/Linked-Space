@@ -1,7 +1,8 @@
 extends StaticBody2D
 
-export(String) var path
-onready var linked = get_node(path)
+export(String) var world
+export(String) var other
+onready var linked = get_node("../../../../ViewportContainer" + world + "/Viewport/Map/" + other)
 
 
 func _ready():

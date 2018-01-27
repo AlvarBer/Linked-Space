@@ -37,6 +37,7 @@ speed = 200
 
 modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 112.668, 36.0769 )
-path = "../../../../ViewportContainer2/Viewport/Map/Stick"
+world = "2"
+other = "Stick"
 
 
