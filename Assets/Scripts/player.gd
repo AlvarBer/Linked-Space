@@ -20,4 +20,5 @@ func _process(delta):
 	
 	var result = $KinematicBody2D.move_and_collide(movement * speed * delta)
 	if result and result.collider.has_meta("Movable"):
-		pass
+		var movable_thing = result.collider
+		# print(movable_thing.get_node("CollisionShape2D").disabled)
