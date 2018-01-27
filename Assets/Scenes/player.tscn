@@ -1,12 +1,14 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Scripts/player2.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/PalmTree.png" type="Texture" id=2]
 
 [node name="Player" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+player_idx = 1
+speed = 100
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
