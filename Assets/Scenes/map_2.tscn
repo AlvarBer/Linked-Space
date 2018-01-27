@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Graphics/Tilesets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=2]
 
-[node name="Map" type="Node2D"]
+[node name="Map" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -31,5 +31,6 @@ _sections_unfolded = [ "Cell" ]
 [node name="Player" parent="." index="1" instance=ExtResource( 2 )]
 
 player_idx = 2
+speed = 200
 
 

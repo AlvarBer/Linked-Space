@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Scenes/map_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scenes/map_2.tscn" type="PackedScene" id=2]
 
-[node name="Node2D" type="Node" index="0"]
+[node name="Node2D" type="Node"]
 
 [node name="Control" type="Control" parent="." index="0"]
 

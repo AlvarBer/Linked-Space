@@ -30,4 +30,6 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="Player" parent="." index="1" instance=ExtResource( 2 )]
 
+speed = 200
+
 
