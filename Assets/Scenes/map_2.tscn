@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Graphics/Tilesets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Scenes/Stick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Graphics/player_2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Scenes/Stick.tscn" type="PackedScene" id=4]
 
-[node name="Map" type="Node2D"]
+[node name="Map" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -33,8 +34,9 @@ _sections_unfolded = [ "Cell" ]
 
 player_idx = 2
 speed = 200
+texture = ExtResource( 3 )
 
-[node name="Stick" parent="." index="2" instance=ExtResource( 3 )]
+[node name="Stick" parent="." index="2" instance=ExtResource( 4 )]
 
 modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 145.102, 92.4953 )
