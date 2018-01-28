@@ -15,6 +15,7 @@ func unlock():
 	if plates_connected <= 0:
 		frame = 1
 		$StaticBody2D/CollisionShape2D.disabled = true
+		self.z_index = 2
 	
 func lock():
 	plates_connected += 1
