@@ -6,7 +6,8 @@ onready var linked = get_node("../../../../ViewportContainer" + world + "/Viewpo
 onready var other_raycast = linked.get_node("../Player/KinematicBody2D/RayCast2D")
 
 func _ready():
-	self.set_meta("Movable", true)
+	pass
+	#self.set_meta("Movable", true)
 
 func on_taken():
 	linked.modulate = Color("434343")
