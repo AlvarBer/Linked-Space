@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Assets/Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/player_1.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/forbidden.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Graphics/button.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/button.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/forbidden.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -320,11 +320,11 @@ _sections_unfolded = [ "Transform" ]
 
 enabled = false
 exclude_parent = false
-cast_to = Vector2( 0, 0 )
+cast_to = Vector2( 35, 0 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="forbidden" type="Sprite" parent="KinematicBody2D" index="4"]
+[node name="allowed" type="Sprite" parent="KinematicBody2D" index="4"]
 
 visible = false
 modulate = Color( 1, 1, 1, 0.745098 )
@@ -332,7 +332,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, -34 )
 _sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="allowed" type="Sprite" parent="KinematicBody2D" index="5"]
+[node name="forbidden" type="Sprite" parent="KinematicBody2D" index="5"]
 
 visible = false
 modulate = Color( 1, 1, 1, 0.745098 )

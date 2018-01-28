@@ -57,10 +57,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("player_%d_take" % player_idx):
 		if holding_obj:  # Trying to place
 			var this_world_raycast = $KinematicBody2D/RayCast2D
-			var other_world_raycast = holding_obj.other_raycast
-			for raycast in ([this_world_raycast, other_world_raycast]):
-				raycast.position = Vector2(0, 0)
-			other_world_raycast.position = other_world_position(holding_obj)
+			var other_world_raycast = holding_obj.linked.get_node("RayCast2D")
 			for raycast_n_obj in ([
 			    [this_world_raycast, holding_obj],
 				[other_world_raycast, holding_obj.linked]
@@ -74,19 +71,18 @@ func _process(delta):
 				raycast.remove_exception(obj)
 			if (not this_world_raycast.is_colliding() and
 			    not other_world_raycast.is_colliding()):
-				
 				holding_obj.position = other_world_position(holding_obj)
 				for obj in [holding_obj, holding_obj.linked]:
 					obj.position += last_move * 48
 					obj.get_node("CollisionShape2D").disabled = false
 				reparent(holding_obj, self.get_parent())
+				reparent(other_world_raycast, holding_obj.linked.get_node("../Player/KinematicBody2D"))
 				holding_obj.on_place()
-				print(other_world_raycast.position)
-				print(other_world_position(holding_obj))
-				other_world_raycast.position = Vector2(0, 0)
-				print(other_world_raycast.position)
+				#other_world_raycast.position = Vector2(0, 0)
 				holding_obj = null
 			else:
+				this_world_raycast.position = Vector2(0, 0)
+				other_world_raycast.position = Vector2(0, 0)
 				$KinematicBody2D/forbidden.visible = true
 				$Timer.start()
 		elif available_object:  # Trying to take
@@ -96,7 +92,11 @@ func _process(delta):
 			holding_obj.position = Vector2(0, 0)
 			holding_obj.on_taken()
 			$KinematicBody2D/RayCast2D.position = Vector2(0, 0)
-
+			reparent(holding_obj.linked.get_node("../Player/KinematicBody2D/RayCast2D"), holding_obj.linked)
+			holding_obj.linked.get_node("RayCast2D").position = Vector2(0, 0)
+	
+	if holding_obj:
+		holding_obj.linked.position = other_world_position(holding_obj)
 
 static func reparent(node, new_parent):
 	""" Changes the parent of node to new_parent """

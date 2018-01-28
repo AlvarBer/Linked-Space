@@ -24,3 +24,6 @@ func on_body_enter(body):
 func on_body_exited(body):
 	if body is KinematicBody2D:
 		body.get_parent().on_take_unavailable()
+
+func test():
+	self.linked.position = self.position
