@@ -70,6 +70,10 @@ func _process(delta):
 					obj.get_node("CollisionShape2D").disabled = false
 				reparent(holding_obj, self.get_parent())
 				holding_obj.on_place()
+				print(other_world_raycast.position)
+				print(other_world_position(holding_obj))
+				other_world_raycast.position = Vector2(0, 0)
+				print(other_world_raycast.position)
 				holding_obj = null
 			else:
 				$KinematicBody2D/forbidden.visible = true
@@ -80,7 +84,7 @@ func _process(delta):
 			reparent(holding_obj, $KinematicBody2D)
 			holding_obj.position = Vector2(0, 0)
 			holding_obj.on_taken()
-			$KinematicBody2D/RayCast2D.add_exception(holding_obj)
+			$KinematicBody2D/RayCast2D.position = Vector2(0, 0)
 
 
 static func reparent(node, new_parent):
