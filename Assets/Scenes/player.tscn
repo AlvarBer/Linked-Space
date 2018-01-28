@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 22, 22 )
+extents = Vector2( 14, 18 )
 
 [sub_resource type="Animation" id=2]
 
@@ -258,7 +258,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -312,7 +312,7 @@ editor_draw_drag_margin = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="2"]
 
-position = Vector2( -1, 0 )
+position = Vector2( 3, 0 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
