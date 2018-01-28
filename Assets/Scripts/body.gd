@@ -16,3 +16,11 @@ func on_place():
 	linked.modulate = Color("ffffff")
 	linked.position = self.position
 	linked.get_node("CollisionShape2D").disabled = false
+
+func on_body_enter(body):
+	if body is KinematicBody2D:
+		body.get_parent().on_take_available(self)
+
+func on_body_exited(body):
+	if body is KinematicBody2D:
+		body.get_parent().on_take_unavailable()

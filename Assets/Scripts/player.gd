@@ -7,6 +7,7 @@ var holding_obj
 var last_move = Vector2(0, 0)
 onready var anim_player = $AnimationPlayer
 var anim = ""
+var available_object
 
 func _ready():
 	$KinematicBody2D/Sprite.set_texture(texture)
@@ -73,8 +74,8 @@ func _process(delta):
 			else:
 				$KinematicBody2D/forbidden.visible = true
 				$Timer.start()
-		elif result and result.collider.has_meta("Movable"):  # Trying to take
-			holding_obj = result.collider
+		elif available_object:  # Trying to take
+			holding_obj = available_object
 			holding_obj.get_node("CollisionShape2D").disabled = true
 			reparent(holding_obj, $KinematicBody2D)
 			holding_obj.position = Vector2(0, 0)
@@ -92,3 +93,9 @@ func other_world_position(node):
 
 func on_Timer_timeout():
 	$KinematicBody2D/forbidden.visible = false
+
+func on_take_available(obj):
+	self.available_object = obj
+
+func on_take_unavailable():
+	self.available_object = null
