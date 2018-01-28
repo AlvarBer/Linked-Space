@@ -10,13 +10,9 @@ func _ready():
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
 func unlock():
 	plates_connected -= 1
-	if plates_connected == 0:
+	if plates_connected <= 0:
 		frame = 1
 		$StaticBody2D/CollisionShape2D.disabled = true
 	

@@ -41,6 +41,7 @@ func pressed():
 func released():
 	if !permanent:
 		objects_over -= 1
+		print(objects_over)
 		if objects_over == 0:
 			frame = 0
 			if linked_0:
