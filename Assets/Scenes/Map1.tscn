@@ -8,7 +8,7 @@
 [ext_resource path="res://Assets/Scenes/Chest.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=7]
 
-[node name="Map1" type="Node2D"]
+[node name="Map1" type="Node2D" index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -35,6 +35,12 @@ tile_data = PoolIntArray( -2621451, 8, 0, -2621450, 8, 0, -2621449, 8, 0, -26214
 position = Vector2( -96, 32 )
 world_0 = "2"
 other_0 = "door_0"
+world_1 = null
+other_1 = null
+world_2 = null
+other_2 = null
+world_3 = null
+other_3 = null
 
 [node name="rock_0" parent="." index="2" instance=ExtResource( 3 )]
 
@@ -47,6 +53,7 @@ other = "rock_0"
 position = Vector2( 32, -1120 )
 z_index = 1
 _sections_unfolded = [ "Animation", "Transform", "Z Index" ]
+plates_connected = 1
 
 [node name="plate_2" parent="." index="4" instance=ExtResource( 2 )]
 
@@ -55,6 +62,10 @@ world_0 = "1"
 other_0 = "door_2"
 world_1 = "2"
 other_1 = "door_2"
+world_2 = null
+other_2 = null
+world_3 = null
+other_3 = null
 
 [node name="rock_1" parent="." index="5" instance=ExtResource( 5 )]
 
@@ -67,6 +78,7 @@ other = "rock_1"
 position = Vector2( 32, -1440 )
 z_index = 2
 _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility", "Z Index" ]
+plates_connected = 1
 
 [node name="rock_2" parent="." index="7" instance=ExtResource( 3 )]
 
@@ -77,19 +89,29 @@ other = "rock_2"
 [node name="door_3" parent="." index="8" instance=ExtResource( 4 )]
 
 position = Vector2( 160, -1600 )
+plates_connected = 1
 
 [node name="plate_4" parent="." index="9" instance=ExtResource( 2 )]
 
 position = Vector2( -32, -1632 )
 world_0 = "2"
 other_0 = "door_4"
+world_1 = null
+other_1 = null
+world_2 = null
+other_2 = null
+world_3 = null
+other_3 = null
 
 [node name="door_5" parent="." index="10" instance=ExtResource( 4 )]
 
 position = Vector2( -96, -1920 )
 _sections_unfolded = [ "Animation", "Transform", "Z Index" ]
+plates_connected = 1
 
 [node name="Chest" parent="." index="11" instance=ExtResource( 6 )]
+
+position = Vector2( -96, -2176 )
 
 [node name="Player" parent="." index="12" instance=ExtResource( 7 )]
 
