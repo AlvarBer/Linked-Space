@@ -9,7 +9,7 @@ func _ready():
 	self.set_meta("Movable", true)
 
 func on_taken():
-	linked.modulate = Color("434343")
+	linked.modulate = Color("9659598c")
 	linked.get_node("CollisionShape2D").disabled = true
 
 func on_place():
