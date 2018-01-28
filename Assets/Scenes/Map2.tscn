@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Graphics/player_2.png" type="Texture" id=6]
 
-[node name="Map2" type="Node2D" index="0"]
+[node name="Map2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -59,14 +59,26 @@ other = "rock_1"
 [node name="plate_1" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 96, -416 )
-world = "2"
-other = "door_1"
+world_0 = null
+other_0 = null
+world_1 = null
+other_1 = null
+world_2 = null
+other_2 = null
+world_3 = null
+other_3 = null
 
 [node name="plate_3" parent="." index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 96, -672 )
-world = "1"
-other = "door_3"
+world_0 = null
+other_0 = null
+world_1 = null
+other_1 = null
+world_2 = null
+other_2 = null
+world_3 = null
+other_3 = null
 
 [node name="Player" parent="." index="8" instance=ExtResource( 5 )]
 

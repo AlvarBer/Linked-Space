@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Scenes/door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=5]
 
-[node name="Map1" type="Node2D"]
+[node name="Map1" type="Node2D" index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -31,14 +31,26 @@ tile_data = PoolIntArray( -1114116, 7, 0, -1114115, 4, 0, -1114114, 5, 0, -11141
 [node name="plate_0" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( -96, 32 )
-world = "2"
-other = "door_0"
+world_0 = "2"
+other_0 = "door_0"
+world_1 = null
+other_1 = null
+world_2 = null
+other_2 = null
+world_3 = null
+other_3 = null
 
 [node name="plate_2" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( -96, -672 )
-world = "2"
-other = "door_2"
+world_0 = null
+other_0 = null
+world_1 = null
+other_1 = null
+world_2 = null
+other_2 = null
+world_3 = null
+other_3 = null
 
 [node name="rock_0" parent="." index="3" instance=ExtResource( 3 )]
 
