@@ -258,7 +258,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="Player" type="Node2D" index="0"]
+[node name="Player" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]

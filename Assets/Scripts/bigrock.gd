@@ -6,7 +6,7 @@ onready var linked = get_node("../../../../ViewportContainer" + world + "/Viewpo
 onready var other_raycast = linked.get_node("../Player/KinematicBody2D/RayCast2D")
 
 func _ready():
-	self.set_meta("Movable", true)
+	pass
 
 func on_taken():
 	linked.modulate = Color("434343")
@@ -18,9 +18,7 @@ func on_place():
 	linked.get_node("CollisionShape2D").disabled = false
 
 func on_body_enter(body):
-	if body is KinematicBody2D:
-		body.get_parent().on_take_available(self)
+	pass
 
 func on_body_exited(body):
-	if body is KinematicBody2D:
-		body.get_parent().on_take_unavailable()
+	pass
