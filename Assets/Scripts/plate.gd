@@ -6,17 +6,25 @@ export(bool) var permanent = false
 onready var linked = get_node("../../../../ViewportContainer" + world + "/Viewport/Map/" + other)
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 
-
-func _on_Area2D_body_entered( body ):
+func pressed():
 	frame = 1
 	linked.unlock()
 
-func _on_Area2D_body_exited( body ):
+func released():
 	if !permanent:
 		frame = 0
 		linked.lock()
 
+func _on_Area2D_body_entered(body):
+	pressed()
+
+func _on_Area2D_body_exited(body):
+	released()
+
+func _on_Area2D_area_entered(area):
+	pressed()
+
+func _on_Area2D_area_exited(area):
+	released()

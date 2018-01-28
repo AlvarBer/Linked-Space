@@ -7,6 +7,7 @@ var holding_obj
 var last_move = Vector2(0, 0)
 onready var anim_player = $AnimationPlayer
 var anim = ""
+var available_object
 
 func _ready():
 	$KinematicBody2D/Sprite.set_texture(texture)
@@ -45,31 +46,36 @@ func _process(delta):
 	if Input.is_action_just_pressed("player_%d_take" % player_idx):
 		if holding_obj:  # Trying to place
 			var this_world_raycast = $KinematicBody2D/RayCast2D
-			var other_world_raycast = holding_obj.get_other_raycast()
+			var other_world_raycast = holding_obj.other_raycast
 			for raycast in ([this_world_raycast, other_world_raycast]):
 				raycast.position = Vector2(0, 0)
 			other_world_raycast.position = other_world_position(holding_obj)
-			for raycast in ([this_world_raycast, other_world_raycast]):
+			for raycast_n_obj in ([
+			    [this_world_raycast, holding_obj],
+				[other_world_raycast, holding_obj.linked]
+			]):
+				var raycast = raycast_n_obj[0]
+				var obj = raycast_n_obj[1]
 				raycast.position += last_move * 25
 				raycast.cast_to = last_move * 80
+				raycast.add_exception(obj)
 				raycast.force_raycast_update()
+				raycast.remove_exception(obj)
 			if (not this_world_raycast.is_colliding() and
 			    not other_world_raycast.is_colliding()):
-				$KinematicBody2D/forbidden.visible = false
-				"""
-				#holding_obj.position += last_move * 64
-				#var pos_to_set = holding_obj.get_relative_transform_to_parent(self.get_parent()).origin
-				reparent(holding_obj, self.get_parent())
-				holding_obj.position = pos_to_set
-				holding_obj.get_node("CollisionShape2D").disabled = false
-				holding_obj.on_place()
 				
+				holding_obj.position = other_world_position(holding_obj)
+				for obj in [holding_obj, holding_obj.linked]:
+					obj.position += last_move * 64
+					obj.get_node("CollisionShape2D").disabled = false
+				reparent(holding_obj, self.get_parent())
+				holding_obj.on_place()
 				holding_obj = null
-				"""
 			else:
 				$KinematicBody2D/forbidden.visible = true
-		elif result and result.collider.has_meta("Movable"):  # Trying to take
-			holding_obj = result.collider
+				$Timer.start()
+		elif available_object:  # Trying to take
+			holding_obj = available_object
 			holding_obj.get_node("CollisionShape2D").disabled = true
 			reparent(holding_obj, $KinematicBody2D)
 			holding_obj.position = Vector2(0, 0)
@@ -84,3 +90,12 @@ static func reparent(node, new_parent):
 
 func other_world_position(node):
 	return node.get_relative_transform_to_parent(self.get_parent()).origin
+
+func on_Timer_timeout():
+	$KinematicBody2D/forbidden.visible = false
+
+func on_take_available(obj):
+	self.available_object = obj
+
+func on_take_unavailable():
+	self.available_object = null
