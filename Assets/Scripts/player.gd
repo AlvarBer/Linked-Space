@@ -57,7 +57,7 @@ func _process(delta):
 				var raycast = raycast_n_obj[0]
 				var obj = raycast_n_obj[1]
 				raycast.position += last_move * 25
-				raycast.cast_to = last_move * 80
+				raycast.cast_to = last_move * 35
 				raycast.add_exception(obj)
 				raycast.force_raycast_update()
 				raycast.remove_exception(obj)
@@ -66,7 +66,7 @@ func _process(delta):
 				
 				holding_obj.position = other_world_position(holding_obj)
 				for obj in [holding_obj, holding_obj.linked]:
-					obj.position += last_move * 64
+					obj.position += last_move * 48
 					obj.get_node("CollisionShape2D").disabled = false
 				reparent(holding_obj, self.get_parent())
 				holding_obj.on_place()
