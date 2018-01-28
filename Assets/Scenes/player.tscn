@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/player_1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Graphics/forbidden.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/button.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -328,6 +329,14 @@ _sections_unfolded = [ "Transform" ]
 visible = false
 modulate = Color( 1, 1, 1, 0.745098 )
 texture = ExtResource( 3 )
+offset = Vector2( 0, -34 )
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="allowed" type="Sprite" parent="KinematicBody2D" index="5"]
+
+visible = false
+modulate = Color( 1, 1, 1, 0.745098 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, -34 )
 _sections_unfolded = [ "Offset", "Visibility" ]
 

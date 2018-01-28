@@ -111,6 +111,8 @@ func on_Timer_timeout():
 
 func on_take_available(obj):
 	self.available_object = obj
+	$KinematicBody2D/allowed.visible = true
 
 func on_take_unavailable():
 	self.available_object = null
+	$KinematicBody2D/allowed.visible = false
