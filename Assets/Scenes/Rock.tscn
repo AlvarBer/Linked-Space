@@ -13,7 +13,7 @@ extents = Vector2( 18, 18 )
 custom_solver_bias = 0.0
 extents = Vector2( 22, 22 )
 
-[node name="Rock" type="StaticBody2D" index="0"]
+[node name="Rock" type="StaticBody2D"]
 
 input_pickable = true
 collision_layer = 3

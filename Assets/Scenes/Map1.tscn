@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Graphics/Map_1/map_1_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/plate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/BigRock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/door.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Scenes/Rock.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Scenes/Chest.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Scenes/Chest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=6]
 
 [node name="Map1" type="Node2D" index="0"]
 
@@ -67,18 +66,18 @@ other_2 = null
 world_3 = null
 other_3 = null
 
-[node name="rock_1" parent="." index="5" instance=ExtResource( 5 )]
-
-position = Vector2( -288, -1312 )
-world = "2"
-other = "rock_1"
-
-[node name="door_2" parent="." index="6" instance=ExtResource( 4 )]
+[node name="door_2" parent="." index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 32, -1440 )
 z_index = 2
 _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility", "Z Index" ]
 plates_connected = 1
+
+[node name="rock_1" parent="." index="6" instance=ExtResource( 3 )]
+
+position = Vector2( -288, -1321 )
+world = "2"
+other = "rock_1"
 
 [node name="rock_2" parent="." index="7" instance=ExtResource( 3 )]
 
@@ -109,11 +108,11 @@ position = Vector2( -96, -1920 )
 _sections_unfolded = [ "Animation", "Transform", "Z Index" ]
 plates_connected = 1
 
-[node name="Chest" parent="." index="11" instance=ExtResource( 6 )]
+[node name="Chest" parent="." index="11" instance=ExtResource( 5 )]
 
 position = Vector2( -96, -2176 )
 
-[node name="Player" parent="." index="12" instance=ExtResource( 7 )]
+[node name="Player" parent="." index="12" instance=ExtResource( 6 )]
 
 _sections_unfolded = [ "Transform", "Z Index" ]
 speed = 200
