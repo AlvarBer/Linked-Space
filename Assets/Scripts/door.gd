@@ -21,4 +21,5 @@ func lock():
 	plates_connected += 1
 	frame = 0
 	$StaticBody2D/CollisionShape2D.disabled = false
+	self.z_index = 0
 	

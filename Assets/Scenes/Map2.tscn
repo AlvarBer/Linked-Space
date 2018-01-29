@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Graphics/Map_2/map_2_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Rock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/plate.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Scenes/Chest.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Graphics/player_2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Map_2/wall_4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/Map_2/wall_3.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/Map_2/wall_5.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Scenes/Chest.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Graphics/player_2.png" type="Texture" id=10]
 
-[node name="Map2" type="Node2D"]
+[node name="Map2" type="Node2D" index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -35,7 +38,6 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( -96, -160 )
 _sections_unfolded = [ "Animation", "Transform", "Z Index" ]
-plates_connected = 1
 
 [node name="rock_0" parent="." index="2" instance=ExtResource( 3 )]
 
@@ -50,15 +52,10 @@ world_0 = "1"
 other_0 = "door_1"
 world_1 = "2"
 other_1 = "door_1"
-world_2 = null
-other_2 = null
-world_3 = null
-other_3 = null
 
 [node name="door_1" parent="." index="4" instance=ExtResource( 2 )]
 
 position = Vector2( -32, -1120 )
-plates_connected = 1
 
 [node name="rock_1" parent="." index="5" instance=ExtResource( 3 )]
 
@@ -69,7 +66,6 @@ other = "rock_1"
 [node name="door_2" parent="." index="6" instance=ExtResource( 2 )]
 
 position = Vector2( 96, -1440 )
-plates_connected = 1
 
 [node name="rock_2" parent="." index="7" instance=ExtResource( 3 )]
 
@@ -82,17 +78,31 @@ other = "rock_2"
 position = Vector2( 32, -1632 )
 world_0 = "1"
 other_0 = "door_3"
-world_1 = null
-other_1 = null
-world_2 = null
-other_2 = null
-world_3 = null
-other_3 = null
 
 [node name="door_4" parent="." index="9" instance=ExtResource( 2 )]
 
-position = Vector2( 160, -1664 )
-plates_connected = 1
+editor/display_folded = true
+position = Vector2( 160, -1696 )
+
+[node name="wall_4" type="Sprite" parent="door_4" index="1"]
+
+position = Vector2( 64, 0 )
+texture = ExtResource( 5 )
+
+[node name="wall_3" type="Sprite" parent="door_4" index="2"]
+
+position = Vector2( 64, 64 )
+texture = ExtResource( 6 )
+
+[node name="wall_5" type="Sprite" parent="door_4" index="3"]
+
+position = Vector2( -64, 0 )
+texture = ExtResource( 7 )
+
+[node name="wall_6" type="Sprite" parent="door_4" index="4"]
+
+position = Vector2( -64, 32 )
+texture = ExtResource( 6 )
 
 [node name="plate_5" parent="." index="10" instance=ExtResource( 4 )]
 
@@ -101,24 +111,39 @@ world_0 = "1"
 other_0 = "door_5"
 world_1 = "2"
 other_1 = "door_5"
-world_2 = null
-other_2 = null
-world_3 = null
-other_3 = null
 
 [node name="door_5" parent="." index="11" instance=ExtResource( 2 )]
 
-position = Vector2( -96, -1920 )
-plates_connected = 1
+position = Vector2( -96, -1952 )
 
-[node name="Chest" parent="." index="12" instance=ExtResource( 5 )]
+[node name="wall_4" type="Sprite" parent="door_5" index="1"]
+
+position = Vector2( -64, 0 )
+texture = ExtResource( 5 )
+
+[node name="wall_3" type="Sprite" parent="door_5" index="2"]
+
+position = Vector2( -64, 64 )
+texture = ExtResource( 6 )
+
+[node name="wall_5" type="Sprite" parent="door_5" index="3"]
+
+position = Vector2( 64, 0 )
+texture = ExtResource( 7 )
+
+[node name="wall_6" type="Sprite" parent="door_5" index="4"]
+
+position = Vector2( 64, 32 )
+texture = ExtResource( 6 )
+
+[node name="Chest" parent="." index="12" instance=ExtResource( 8 )]
 
 position = Vector2( -96, -2176 )
 
-[node name="Player" parent="." index="13" instance=ExtResource( 6 )]
+[node name="Player" parent="." index="13" instance=ExtResource( 9 )]
 
 player_idx = 2
 speed = 200
-texture = ExtResource( 7 )
+texture = ExtResource( 10 )
 
 

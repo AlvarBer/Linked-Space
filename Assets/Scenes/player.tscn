@@ -258,7 +258,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -281,7 +281,7 @@ texture = ExtResource( 2 )
 vframes = 6
 hframes = 4
 frame = 20
-_sections_unfolded = [ "Animation", "Offset", "Transform" ]
+_sections_unfolded = [ "Animation", "Offset", "Transform", "Z Index" ]
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D" index="1"]
 
