@@ -1,10 +1,10 @@
 extends Sprite
 
+signal chest_opened
 
 func _ready():
 	pass
 
-
-func _on_Area2D_body_entered(body):
+func on_body_entered(body):
 	frame = 1
-	self.get_node("../../../../../..").add_opened()
+	emit_signal("chest_opened")
