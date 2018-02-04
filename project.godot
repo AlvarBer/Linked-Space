@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="GGJ18"
-run/main_scene="res://Assets/Scenes/game.tscn"
+run/main_scene="res://Assets/Scenes/Game.tscn"
 config/icon="res://icon.png"
 
 [display]

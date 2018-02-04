@@ -13,7 +13,7 @@ extents = Vector2( 64, 64 )
 custom_solver_bias = 0.0
 extents = Vector2( 45, 45 )
 
-[node name="Chest" type="Sprite" groups=[
+[node name="chest" type="Sprite" groups=[
 "chests",
 ]]
 

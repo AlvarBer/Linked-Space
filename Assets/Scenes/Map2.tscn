@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Graphics/Map_2/map_2_tilemap.tres" type="TileSet" id=1]
-[ext_resource path="res://Assets/Scenes/door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Rock.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Scenes/plate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scenes/Plate.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Graphics/Map_2/wall_4.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Graphics/Map_2/wall_3.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Graphics/Map_2/wall_5.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Scenes/Chest.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Scenes/player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Graphics/player_2.png" type="Texture" id=10]
 
 [node name="Map2" type="Node2D"]

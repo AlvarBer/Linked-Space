@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Scenes/Map2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/Credits.tscn" type="PackedScene" id=4]
 
-[node name="Node2D" type="Node" index="0"]
+[node name="Node2D" type="Node"]
 
 [node name="Control" type="Control" parent="." index="0"]
 
