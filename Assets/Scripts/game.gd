@@ -12,4 +12,4 @@ func _ready():
 func add_opened():
 	self.opened_chests += 1
 	if self.opened_chests == self.number_of_chests:
-		$Credits.visible = true
+		$credits.visible = true

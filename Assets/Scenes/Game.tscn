@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scenes/Map1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Map2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/Credits.tscn" type="PackedScene" id=4]
 
-[node name="Node2D" type="Node"]
+[node name="Node2D" type="Node" index="0"]
 
 [node name="Control" type="Control" parent="." index="0"]
 
@@ -128,7 +128,7 @@ shadow_atlas_quad_3 = 4
 
 [node name="Map" parent="Control/HSplitContainer/ViewportContainer2/Viewport" index="0" instance=ExtResource( 3 )]
 
-[node name="Credits" parent="Control" index="1" instance=ExtResource( 4 )]
+[node name="credits" parent="Control" index="1" instance=ExtResource( 4 )]
 
 visible = false
 _sections_unfolded = [ "Visibility" ]

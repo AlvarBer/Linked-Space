@@ -136,7 +136,7 @@ texture = ExtResource( 7 )
 position = Vector2( 64, 32 )
 texture = ExtResource( 6 )
 
-[node name="Chest" parent="." index="12" instance=ExtResource( 8 )]
+[node name="chest" parent="." index="12" instance=ExtResource( 8 )]
 
 position = Vector2( -96, -2176 )
 
