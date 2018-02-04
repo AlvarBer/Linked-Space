@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Scenes/Map1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scenes/Map2.tscn" type="PackedScene" id=2]
 
-[node name="Node2D" type="Node"]
+[node name="Node2D" type="Node" index="0"]
 
 [node name="Control" type="Control" parent="." index="0"]
 
@@ -46,7 +46,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-stretch = false
+stretch = true
 stretch_shrink = 1
 _sections_unfolded = [ "Grow Direction", "Hint", "Size Flags" ]
 
@@ -92,7 +92,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-stretch = false
+stretch = true
 stretch_shrink = 1
 _sections_unfolded = [ "Size Flags" ]
 

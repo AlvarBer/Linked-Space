@@ -17,7 +17,7 @@ func _process(delta):
 	var movement = Vector2(0, 0)
 	var result = null
 	var new_anim = ""
-	
+
 	# Check inputs
 	if Input.is_action_pressed("player_%d_left" % player_idx):
 		movement += Vector2(-1, 0)
@@ -31,13 +31,13 @@ func _process(delta):
 	elif Input.is_action_pressed("player_%d_down" % player_idx):
 		movement += Vector2(0, 1)
 		new_anim = "walk_bot"
-	
+
 	# Do actual movement
 	if movement != Vector2(0, 0):
 		result = $KinematicBody2D.move_and_collide(movement * speed * delta)
 		if not result:
 			last_move = movement
-	
+
 	if new_anim == "":
 		if last_move == Vector2(1, 0):
 			new_anim = "idle_right"
@@ -94,7 +94,7 @@ func _process(delta):
 			$KinematicBody2D/RayCast2D.position = Vector2(0, 0)
 			reparent(holding_obj.linked.get_node("../Player/KinematicBody2D/RayCast2D"), holding_obj.linked)
 			holding_obj.linked.get_node("RayCast2D").position = Vector2(0, 0)
-	
+
 	if holding_obj:
 		holding_obj.linked.position = other_world_position(holding_obj)
 
