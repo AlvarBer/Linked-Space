@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="GGJ18"
+config/name="LinkedSpace"
 run/main_scene="res://Assets/Scenes/Game.tscn"
 config/icon="res://icon.png"
 
