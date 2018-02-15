@@ -258,7 +258,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="Player" type="Node2D" index="0"]
+[node name="Player" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -356,7 +356,6 @@ anims/walk_left = SubResource( 7 )
 anims/walk_right = SubResource( 8 )
 anims/walk_top = SubResource( 9 )
 blend_times = [  ]
-autoplay = ""
 
 [node name="Timer" type="Timer" parent="." index="2"]
 

@@ -1,13 +1,16 @@
 extends Node2D
 
+const Util = preload("res://Assets/Scripts/Util.gd")
 export var player_idx = 1
 export var speed = 100
 export(Texture) var texture
+
+
 var holding_obj
 var last_move = Vector2(0, 0)
-onready var anim_player = $AnimationPlayer
 var anim = ""
 var available_object
+onready var anim_player = $AnimationPlayer
 
 func _ready():
 	$KinematicBody2D/Sprite.set_texture(texture)
@@ -55,53 +58,18 @@ func _process(delta):
 
 	# Taking/placing things
 	if Input.is_action_just_pressed("player_%d_take" % player_idx):
+		print(self.print_tree())
+		print("---")
 		if holding_obj:  # Trying to place
-			var this_world_raycast = $KinematicBody2D/RayCast2D
-			var other_world_raycast = holding_obj.linked.get_node("RayCast2D")
-			for raycast_n_obj in ([
-			    [this_world_raycast, holding_obj],
-				[other_world_raycast, holding_obj.linked]
-			]):
-				var raycast = raycast_n_obj[0]
-				var obj = raycast_n_obj[1]
-				raycast.position += last_move * 25
-				raycast.cast_to = last_move * 35
-				raycast.add_exception(obj)
-				raycast.force_raycast_update()
-				raycast.remove_exception(obj)
-			if (not this_world_raycast.is_colliding() and
-			    not other_world_raycast.is_colliding()):
-				holding_obj.position = other_world_position(holding_obj)
-				for obj in [holding_obj, holding_obj.linked]:
-					obj.position += last_move * 48
-					obj.get_node("CollisionShape2D").disabled = false
-				reparent(holding_obj, self.get_parent())
-				reparent(other_world_raycast, holding_obj.linked.get_node("../Player/KinematicBody2D"))
-				holding_obj.on_place()
-				#other_world_raycast.position = Vector2(0, 0)
+			if Util.can_stop_act(self.holding_obj, self):
+				Util.stop_act(self.holding_obj, self)
 				holding_obj = null
 			else:
-				this_world_raycast.position = Vector2(0, 0)
-				other_world_raycast.position = Vector2(0, 0)
 				$KinematicBody2D/forbidden.visible = true
 				$Timer.start()
 		elif available_object:  # Trying to take
-			holding_obj = available_object
-			holding_obj.get_node("CollisionShape2D").disabled = true
-			reparent(holding_obj, $KinematicBody2D)
-			holding_obj.position = Vector2(0, 0)
-			holding_obj.on_taken()
-			$KinematicBody2D/RayCast2D.position = Vector2(0, 0)
-			reparent(holding_obj.linked.get_node("../Player/KinematicBody2D/RayCast2D"), holding_obj.linked)
-			holding_obj.linked.get_node("RayCast2D").position = Vector2(0, 0)
-
-	if holding_obj:
-		holding_obj.linked.position = other_world_position(holding_obj)
-
-static func reparent(node, new_parent):
-	""" Changes the parent of node to new_parent """
-	node.get_parent().remove_child(node)
-	new_parent.add_child(node)
+			self.holding_obj = available_object
+			Util.act(available_object, $KinematicBody2D)
 
 func other_world_position(node):
 	return node.get_relative_transform_to_parent(self.get_parent()).origin

@@ -2,6 +2,8 @@ extends StaticBody2D
 
 export(String) var world
 export(String) var other
+
+
 onready var linked = get_node("../../../../ViewportContainer" + world + "/Viewport/Map/" + other)
 onready var other_raycast = linked.get_node("../Player/KinematicBody2D/RayCast2D")
 
@@ -22,3 +24,14 @@ func on_body_enter(body):
 
 func on_body_exited(body):
 	pass
+
+func on_act(active):
+	if not active:
+		linked.modulate = Color("434343")
+		linked.get_node("CollisionShape2D").disabled = true
+
+func on_act_stop(active):
+	if not active:
+		linked.modulate = Color("ffffff")
+		linked.position = self.position
+		linked.get_node("CollisionShape2D").disabled = false
