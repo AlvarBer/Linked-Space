@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 const Util = preload("res://Assets/Scripts/Util.gd")
 export var player_idx = 1
@@ -13,7 +13,7 @@ var available_object
 onready var anim_player = $AnimationPlayer
 
 func _ready():
-	$KinematicBody2D/Sprite.set_texture(texture)
+	$Sprite.set_texture(texture)
 	set_process(true)
 
 func _process(delta):
@@ -37,7 +37,7 @@ func _process(delta):
 
 	# Do actual movement
 	if movement != Vector2(0, 0):
-		result = $KinematicBody2D.move_and_collide(movement * speed * delta)
+		result = self.move_and_collide(movement * speed * delta)
 		if not result:
 			last_move = movement
 
@@ -58,29 +58,24 @@ func _process(delta):
 
 	# Taking/placing things
 	if Input.is_action_just_pressed("player_%d_take" % player_idx):
-		self.get_parent().print_tree()
-		print("---")
 		if holding_obj:  # Trying to place
 			if Util.can_stop_act(self.holding_obj, self):
 				Util.stop_act(self.holding_obj, self)
 				holding_obj = null
 			else:
-				$KinematicBody2D/forbidden.visible = true
+				$SpriteForbidden.visible = true
 				$Timer.start()
 		elif available_object:  # Trying to take
 			self.holding_obj = available_object
-			Util.act(available_object, $KinematicBody2D)
-
-func other_world_position(node):
-	return node.get_relative_transform_to_parent(self.get_parent()).origin
-
-func on_Timer_timeout():
-	$KinematicBody2D/forbidden.visible = false
+			Util.act(available_object, self)
 
 func on_take_available(obj):
 	self.available_object = obj
-	$KinematicBody2D/allowed.visible = true
+	$SpriteAllowed.visible = true
 
 func on_take_unavailable():
 	self.available_object = null
-	$KinematicBody2D/allowed.visible = false
+	$SpriteAllowed.visible = true
+
+func on_timer_timeout():
+	$SpriteForbidden.visible = false

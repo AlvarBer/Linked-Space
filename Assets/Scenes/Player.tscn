@@ -25,7 +25,7 @@ length = 0.6
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:flip_h")
+tracks/0/path = NodePath("Sprite:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -37,7 +37,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("KinematicBody2D/Sprite:frame")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -56,7 +56,7 @@ length = 0.6
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:flip_h")
+tracks/0/path = NodePath("Sprite:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -68,7 +68,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("KinematicBody2D/Sprite:frame")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -87,7 +87,7 @@ length = 0.6
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:flip_h")
+tracks/0/path = NodePath("Sprite:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -99,7 +99,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("KinematicBody2D/Sprite:frame")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -118,7 +118,7 @@ length = 0.6
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -130,7 +130,7 @@ tracks/0/keys = {
 "values": [ 6, 7 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("KinematicBody2D/Sprite:flip_h")
+tracks/1/path = NodePath("Sprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -149,7 +149,7 @@ length = 0.5
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -161,7 +161,7 @@ tracks/0/keys = {
 "values": [ 13, 14, 15, 16, 17 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("KinematicBody2D/Sprite:flip_h")
+tracks/1/path = NodePath("Sprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -180,7 +180,7 @@ length = 0.5
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -192,7 +192,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("KinematicBody2D/Sprite:flip_h")
+tracks/1/path = NodePath("Sprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -211,7 +211,7 @@ length = 0.5
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:flip_h")
+tracks/0/path = NodePath("Sprite:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -223,7 +223,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("KinematicBody2D/Sprite:frame")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -242,7 +242,7 @@ length = 0.5
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -254,7 +254,7 @@ tracks/0/keys = {
 "values": [ 18, 19, 20, 21, 22 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("KinematicBody2D/Sprite:flip_h")
+tracks/1/path = NodePath("Sprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -266,23 +266,19 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="Player" type="Node2D"]
+[node name="KinematicBody2D" type="KinematicBody2D"]
 
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 player_idx = 1
 speed = 100
 texture = SubResource( 10 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
-
-input_pickable = false
-collision_layer = 3
-collision_mask = 3
-collision/safe_margin = 0.08
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
-
-[node name="Sprite" type="Sprite" parent="KinematicBody2D" index="0"]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0.429823, -0.209594 )
 texture = ExtResource( 2 )
@@ -291,7 +287,7 @@ hframes = 4
 frame = 20
 _sections_unfolded = [ "Animation", "Offset", "Transform", "Z Index" ]
 
-[node name="Camera2D" type="Camera2D" parent="KinematicBody2D" index="1"]
+[node name="Camera2D" type="Camera2D" parent="." index="1"]
 
 position = Vector2( 0.429823, -0.209594 )
 scale = Vector2( 1.07446, 0.882997 )
@@ -318,13 +314,13 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 position = Vector2( 3, 0 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="RayCast2D" type="RayCast2D" parent="KinematicBody2D" index="3"]
+[node name="RayCast2D" type="RayCast2D" parent="." index="3"]
 
 enabled = false
 exclude_parent = false
@@ -332,7 +328,7 @@ cast_to = Vector2( 35, 0 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="allowed" type="Sprite" parent="KinematicBody2D" index="4"]
+[node name="SpriteAllowed" type="Sprite" parent="." index="4"]
 
 visible = false
 modulate = Color( 1, 1, 1, 0.745098 )
@@ -340,7 +336,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, -34 )
 _sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="forbidden" type="Sprite" parent="KinematicBody2D" index="5"]
+[node name="SpriteForbidden" type="Sprite" parent="." index="5"]
 
 visible = false
 modulate = Color( 1, 1, 1, 0.745098 )
@@ -348,7 +344,7 @@ texture = ExtResource( 4 )
 offset = Vector2( 0, -34 )
 _sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -365,13 +361,13 @@ anims/walk_right = SubResource( 8 )
 anims/walk_top = SubResource( 9 )
 blend_times = [  ]
 
-[node name="Timer" type="Timer" parent="." index="2"]
+[node name="Timer" type="Timer" parent="." index="7"]
 
 process_mode = 1
 wait_time = 0.5
 one_shot = true
 autostart = false
 
-[connection signal="timeout" from="Timer" to="." method="on_Timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="on_timer_timeout"]
 
 

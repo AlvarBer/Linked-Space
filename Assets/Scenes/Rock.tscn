@@ -59,6 +59,6 @@ _sections_unfolded = [ "Transform" ]
 
 [connection signal="body_entered" from="Area2D" to="." method="on_body_enter"]
 
-[connection signal="body_exited" from="Area2D" to="." method="on_body_exited"]
+[connection signal="body_exited" from="Area2D" to="." method="on_body_exit"]
 
 

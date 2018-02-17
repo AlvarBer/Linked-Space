@@ -6,8 +6,9 @@ static func reparent(node, new_parent):
 	node.get_parent().remove_child(node)
 	new_parent.add_child(node)
 
-static func pos_relative_to(node, grandparent):
-	return node.get_relative_transform_to_parent(grandparent).origin
+static func pos_relative_to(node, ancestor):
+	""" Returns the position relative to an ancestor"""
+	return node.get_relative_transform_to_parent(ancestor).origin
 
 static func act(mirror, player):
 	""" Given an actable object that has a linked actable object executes on_act

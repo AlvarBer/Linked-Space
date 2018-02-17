@@ -19,7 +19,7 @@ func on_act(active, player):
 		Util.reparent(self, player)
 		self.position = Vector2(0, 0)
 	else:
-		Util.reparent(self.get_node("../Player/KinematicBody2D/RayCast2D"), self)
+		Util.reparent(self.get_node("../Player/RayCast2D"), self)
 		$RayCast2D.position = Vector2(0, 0)
 		self.modulate = Color("#434343")
 		self.set_process(true)
@@ -31,20 +31,19 @@ func on_continued_act(active):
 func on_stop_act(active, player):
 	if active:
 		var pos_on_map = Util.pos_relative_to(self, self.get_node("../.."))
-		# TODO Change player to be a KinematicBody2D?
-		Util.reparent(self, self.get_node("../../.."))
+		Util.reparent(self, self.get_node("../.."))
 		self.position = pos_on_map
 	else:
 		self.modulate = Color("#ffffff")
 		self.set_process(false)
-		Util.reparent($RayCast2D, self.get_node("../Player/KinematicBody2D"))
+		Util.reparent($RayCast2D, self.get_node("../Player"))
 	self.position += player.last_move * 48
 	$CollisionShape2D.disabled = false
 
 func can_stop_act(active, player):
 	var raycast
 	if active:
-		raycast = player.get_node("KinematicBody2D/RayCast2D")
+		raycast = player.get_node("RayCast2D")
 	else:
 		raycast = $RayCast2D
 	raycast.position = player.last_move * 25
@@ -55,9 +54,10 @@ func can_stop_act(active, player):
 	return not raycast.is_colliding()
 
 func on_body_enter(body):
+	print("Rock on_body_enter")
 	if body is KinematicBody2D:
 		body.get_parent().on_take_available(self)
 
-func on_body_exited(body):
+func on_body_exit(body):
 	if body is KinematicBody2D:
 		body.get_parent().on_take_unavailable()
