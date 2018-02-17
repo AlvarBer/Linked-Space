@@ -14,7 +14,6 @@ func _process(delta):
 	self.on_continued_act(false)
 
 func on_act(active, player):
-	# Assume acting is possible
 	$CollisionShape2D.disabled = true
 	if active:
 		Util.reparent(self, player)
@@ -32,7 +31,8 @@ func on_continued_act(active):
 func on_stop_act(active, player):
 	if active:
 		var pos_on_map = Util.pos_relative_to(self, self.get_node("../.."))
-		Util.reparent(self, self.get_node("../.."))
+		# TODO Change player to be a KinematicBody2D?
+		Util.reparent(self, self.get_node("../../.."))
 		self.position = pos_on_map
 	else:
 		self.modulate = Color("#ffffff")

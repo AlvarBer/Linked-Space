@@ -1,9 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Assets/Scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/player_1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Graphics/button.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Graphics/forbidden.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=10]
+
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 0, 0 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -264,7 +272,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 player_idx = 1
 speed = 100
-texture = ExtResource( 2 )
+texture = SubResource( 10 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
 

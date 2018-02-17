@@ -58,7 +58,7 @@ func _process(delta):
 
 	# Taking/placing things
 	if Input.is_action_just_pressed("player_%d_take" % player_idx):
-		print(self.print_tree())
+		self.get_parent().print_tree()
 		print("---")
 		if holding_obj:  # Trying to place
 			if Util.can_stop_act(self.holding_obj, self):
