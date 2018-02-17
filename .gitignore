@@ -1,2 +1,3 @@
 Build/
 *.import
+**/test*

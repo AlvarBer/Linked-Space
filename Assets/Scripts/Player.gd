@@ -35,8 +35,7 @@ func _process(delta):
 		movement += Vector2(0, 1)
 		new_anim = "walk_bot"
 
-	# Do actual movement
-	if movement != Vector2(0, 0):
+	if movement != Vector2(0, 0): # Do actual movement
 		result = self.move_and_collide(movement * speed * delta)
 		if not result:
 			last_move = movement
@@ -75,7 +74,7 @@ func on_take_available(obj):
 
 func on_take_unavailable():
 	self.available_object = null
-	$SpriteAllowed.visible = true
+	$SpriteAllowed.visible = false
 
 func on_timer_timeout():
 	$SpriteForbidden.visible = false
