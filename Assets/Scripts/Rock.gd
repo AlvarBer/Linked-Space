@@ -1,14 +1,20 @@
 extends StaticBody2D
 
+
 const Util = preload("res://Assets/Scripts/Util.gd")
-export(String) var world
-export(String) var other
+export(String) var group
+var linked
 
-
-onready var linked = get_node("../../../../ViewportContainer" + world + "/Viewport/Map/" + other)
+func _enter_tree():
+	if self.group:
+		self.add_to_group(self.group)
 
 func _ready():
 	self.set_process(false)
+	if self.group:
+		for node in self.get_tree().get_nodes_in_group(self.group):
+			if node != self:
+				self.linked = node
 
 func _process(delta):
 	self.on_continued_act(false)
@@ -25,7 +31,7 @@ func on_act(active, player):
 		self.set_process(true)
 
 func on_continued_act(active):
-	if not active and self.is_processing():
+	if not active and self.is_processing():  # To avoid race conditions
 		self.position = Util.pos_on_paren(self.linked.get_parent())
 
 func on_stop_act(active, player):

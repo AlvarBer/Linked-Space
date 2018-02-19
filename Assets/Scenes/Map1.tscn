@@ -141,7 +141,7 @@ position = Vector2( -96, -2176 )
 
 [node name="Player" parent="." index="12" instance=ExtResource( 9 )]
 
-_sections_unfolded = [ "Transform", "Z Index" ]
+_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 speed = 200
 
 
