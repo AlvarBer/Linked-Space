@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Scripts/bigrock.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/BigRock.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/rock_2.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -24,8 +24,7 @@ friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility" ]
-world = null
-other = null
+group = null
 
 [node name="Rock" type="Sprite" parent="." index="0"]
 

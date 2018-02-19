@@ -19,13 +19,17 @@ func _ready():
 func _process(delta):
 	self.on_continued_act(false)
 
+
+func on_body_enter(body):
+	pass
+
+func on_body_exited(body):
+	pass
+
 func on_act(active, player):
-	$CollisionShape2D.disabled = true
-	Util.reparent(self.get_node("../Player/RayCast2D"), self)
-	if active:
-		Util.reparent(self, player)
-		self.position = Vector2(0, 0)
-	else:
+	if not active:
+		$CollisionShape2D.disabled = true
+		Util.reparent(self.get_node("../Player/RayCast2D"), self)
 		$RayCast2D.position = Vector2(0, 0)
 		self.modulate = Color("#434343")
 		self.set_process(true)
@@ -33,7 +37,6 @@ func on_act(active, player):
 func on_continued_act(active):
 	if not active and self.is_processing():  # To avoid race conditions
 		self.position = Util.pos_on_paren(self.linked.get_parent())
-
 
 func can_stop_act(active, player):
 	var raycast = $RayCast2D
@@ -45,21 +48,9 @@ func can_stop_act(active, player):
 	return not raycast.is_colliding()
 
 func on_stop_act(active, player):
-	if active:
-		var pos_on_map = Util.pos_on_paren(self.get_parent())
-		Util.reparent(self, self.get_node("../.."))
-		self.position = pos_on_map
-	else:
+	if not active:
 		self.set_process(false)
 		self.modulate = Color("#ffffff")
-	Util.reparent($RayCast2D, self.get_node("../Player"))
-	self.position += player.last_move * 48
-	$CollisionShape2D.disabled = false
-
-func on_body_enter(body):
-	if body is KinematicBody2D:
-		body.on_take_available(self)
-
-func on_body_exit(body):
-	if body is KinematicBody2D:
-		body.on_take_unavailable()
+		Util.reparent($RayCast2D, self.get_node("../Player"))
+		self.position += player.last_move * 48
+		$CollisionShape2D.disabled = false
