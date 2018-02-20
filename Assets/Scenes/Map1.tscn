@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Graphics/Map_1/map_1_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/Plate.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Graphics/Map_1/wall_5.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Scenes/Chest.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Graphics/player_1.png" type="Texture" id=10]
 
 [node name="Map1" type="Node2D"]
 
@@ -42,8 +43,7 @@ other_0 = "door_0"
 [node name="rock_0" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 96, -544 )
-world = "2"
-other = "rock_0"
+group = "rock0"
 
 [node name="door_1" parent="." index="3" instance=ExtResource( 4 )]
 
@@ -68,14 +68,12 @@ _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility", "Z Inde
 [node name="rock_1" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( -288, -1321 )
-world = "2"
-other = "rock_1"
+group = "rock1"
 
 [node name="rock_2" parent="." index="7" instance=ExtResource( 3 )]
 
 position = Vector2( 32, -1504 )
-world = "2"
-other = "rock_2"
+group = "rock2"
 
 [node name="door_3" parent="." index="8" instance=ExtResource( 4 )]
 
@@ -143,5 +141,6 @@ position = Vector2( -96, -2176 )
 
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 speed = 200
+texture = ExtResource( 10 )
 
 

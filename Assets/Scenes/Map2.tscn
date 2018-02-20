@@ -42,8 +42,7 @@ _sections_unfolded = [ "Animation", "Transform", "Z Index" ]
 [node name="rock_0" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 96, -544 )
-world = "1"
-other = "rock_0"
+group = "rock0"
 
 [node name="plate_1" parent="." index="3" instance=ExtResource( 4 )]
 
@@ -60,8 +59,7 @@ position = Vector2( -32, -1120 )
 [node name="rock_1" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( -288, -1312 )
-world = "1"
-other = "rock_1"
+group = "rock1"
 
 [node name="door_2" parent="." index="6" instance=ExtResource( 2 )]
 
@@ -70,8 +68,7 @@ position = Vector2( 96, -1440 )
 [node name="rock_2" parent="." index="7" instance=ExtResource( 3 )]
 
 position = Vector2( 32, -1504 )
-world = "1"
-other = "rock_2"
+group = "rock2"
 
 [node name="plate_3" parent="." index="8" instance=ExtResource( 4 )]
 
@@ -114,6 +111,7 @@ other_1 = "door_5"
 
 [node name="door_5" parent="." index="11" instance=ExtResource( 2 )]
 
+editor/display_folded = true
 position = Vector2( -96, -1952 )
 
 [node name="wall_4" type="Sprite" parent="door_5" index="1"]
