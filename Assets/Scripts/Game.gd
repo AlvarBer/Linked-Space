@@ -1,5 +1,6 @@
 extends Node
 
+
 var number_of_chests
 var opened_chests = 0
 

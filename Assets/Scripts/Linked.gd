@@ -8,10 +8,10 @@ func _enter_tree():
 		self.add_to_group(self.group)
 
 func _ready():
-	self.set_process(false)
+	pass
 
-func _process(delta):
-	self.on_continued_act(false)
+func can_act():
+	return True
 
 func on_act(active, player):
 	pass
@@ -20,7 +20,7 @@ func on_continued_act(active):
 	pass
 
 func can_stop_act(active, player):
-	pass
+	return True
 
 func on_stop_act(active, player):
 	pass
