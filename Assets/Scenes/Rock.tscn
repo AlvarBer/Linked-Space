@@ -24,8 +24,7 @@ friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility" ]
-world = null
-other = null
+group = null
 
 [node name="Rock" type="Sprite" parent="." index="0"]
 

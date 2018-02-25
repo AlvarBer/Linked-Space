@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Scripts/Linked.gd" type="Script" id=1]
+
+[node name="LinkedBehavior" type="Node" index="0"]
+
+script = ExtResource( 1 )
+group = null
+
+
