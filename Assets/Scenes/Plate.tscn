@@ -1,28 +1,20 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Graphics/plate.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Scripts/plate.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Scripts/Plate.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 20, 18 )
 
-[node name="plate" type="Sprite"]
+[node name="Plate" type="Sprite" index="0"]
 
 texture = ExtResource( 1 )
 vframes = 2
 script = ExtResource( 2 )
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
-world_0 = null
-other_0 = null
-world_1 = null
-other_1 = null
-world_2 = null
-other_2 = null
-world_3 = null
-other_3 = null
-permanent = false
+group = null
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 

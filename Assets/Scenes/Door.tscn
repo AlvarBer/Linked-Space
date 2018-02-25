@@ -1,20 +1,21 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Graphics/door.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Scripts/door.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Scripts/Door.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="door" type="Sprite"]
+[node name="Door" type="Sprite" index="0"]
 
 texture = ExtResource( 1 )
 vframes = 2
 script = ExtResource( 2 )
 _sections_unfolded = [ "Animation", "Transform" ]
-plates_connected = 1
+group = null
+plates_needed = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="0"]
 

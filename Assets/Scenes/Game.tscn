@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Scripts/game.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scenes/Map1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Map2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/Credits.tscn" type="PackedScene" id=4]
